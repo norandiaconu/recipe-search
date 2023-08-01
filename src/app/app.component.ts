@@ -12,7 +12,8 @@ const Recipe = z.object({
   })),
   instructions: z.array(z.object({
     display_text: z.string()
-  }))
+  })),
+  slug: z.string()
 });
 type Recipe = z.infer<typeof Recipe>;
 
@@ -27,6 +28,7 @@ export class AppComponent {
   recipeName = "";
   ingredients: any[] = [];
   instructions: any[] = [];
+  slug = "";
 
   async searchTasty(ingredient1: string, ingredient2: string, ingredient3: string): Promise<void> {
     console.log(ingredient1, ingredient2, ingredient3);
@@ -63,5 +65,12 @@ export class AppComponent {
     this.recipeName = recipe.name;
     this.ingredients = recipe.sections;
     this.instructions = recipe.instructions;
+    this.slug = recipe.slug;
+    setTimeout(() => {
+      window.scrollTo({
+        top: 500,
+        behavior: "smooth"
+      });
+    }, 100);
   }
 }

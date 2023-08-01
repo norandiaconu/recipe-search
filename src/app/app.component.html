@@ -15,7 +15,7 @@
     </div>
   </div>
   <br />
-  <div>{{ recipeName }}</div>
+  <a href="https://tasty.co/recipe/{{slug}}" target="_blank" class="space">{{ recipeName }}</a>
   <br />
   <div *ngIf="ingredients.length">Ingredients:</div>
   <div *ngFor="let ingredient of ingredients; let i = index">
