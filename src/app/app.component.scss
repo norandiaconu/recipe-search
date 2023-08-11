@@ -2,6 +2,10 @@
   margin-left: 30px;
 }
 
+.fw700 {
+  font-weight: 700;
+}
+
 .space {
   margin: 10px;
   font-size: medium;
@@ -11,6 +15,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.recipe {
+  color: whitesmoke;
 }
 
 :host {
@@ -30,8 +38,8 @@
   height: 60px;
   display: flex;
   align-items: center;
-  background-color: #1976d2;
-  color: white;
+  background-color: #79dcf1;
+  color: black;
   font-weight: 600;
 }
 
