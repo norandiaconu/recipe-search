@@ -1,13 +1,13 @@
 {
   "name": "recipe-search",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "bin": {
     "recipe-search": "index.js"
   },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build && javascript-obfuscator docs",
+    "build": "ng build && javascript-obfuscator docs && node obfuscate.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "browser": "start http://localhost:3000",
