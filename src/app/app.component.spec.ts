@@ -24,8 +24,20 @@ describe("AppComponent", () => {
   });
 
   it(`should have as title 'recipe-search'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
     expect(app.title).toEqual('recipe-search');
+  });
+
+  it(`should display`, () => {
+    const recipe = {
+      name: 'testName',
+      sections: [{name: 'sectionName', components: [{raw_text: 'sectionText'}]}],
+      instructions: [{display_text: 'instructionText'}],
+      slug: 'testSlug'
+    };
+    app.display(recipe);
+    expect(app.recipeName).toEqual('testName');
+    expect(app.ingredients).toEqual([{name: 'sectionName', components: [{raw_text: 'sectionText'}]}]);
+    expect(app.instructions).toEqual([{display_text: 'instructionText'}]);
+    expect(app.slug).toEqual('testSlug');
   });
 });
