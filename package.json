@@ -1,6 +1,6 @@
 {
   "name": "recipe-search",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "bin": {
     "recipe-search": "index.js"
   },
@@ -10,8 +10,8 @@
     "build": "ng build && javascript-obfuscator docs && node obfuscate.js",
     "watch": "ng build --watch --configuration development",
     "test": "jest",
-    "browser": "start http://localhost:3000",
-    "docs": "serve docs",
+    "browser": "start http://localhost:8080",
+    "docs": "http-server docs",
     "run-bin": "run-p browser docs",
     "android-init": "cap init --web-dir docs && cap add android && capacitor-assets generate --android",
     "android": "npm run build && cap sync && cap open android",
@@ -27,9 +27,9 @@
     "@angular/platform-browser": "^17.3.12",
     "@angular/platform-browser-dynamic": "^17.3.12",
     "@angular/router": "^17.3.12",
+    "http-server": "~14.1.1",
     "npm-run-all2": "^6.0.6",
     "rxjs": "~7.5.0",
-    "serve": "^14.2.0",
     "tslib": "^2.3.0",
     "zod": "^3.22.4",
     "zone.js": "~0.14.10"
