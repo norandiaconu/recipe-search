@@ -13,7 +13,6 @@ Happy linting! 💖
 */
 module.exports = {
     ignorePatterns: [
-        'android/',
         'coverage/',
         'docs/',
         'environments/',

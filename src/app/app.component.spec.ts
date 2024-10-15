@@ -23,7 +23,7 @@ describe('AppComponent', () => {
         expect(app).toBeTruthy();
     });
 
-    it("should have as title 'recipe-search'", () => {
+    it('should have as title recipe-search', () => {
         expect(app.title).toEqual('recipe-search');
     });
 
