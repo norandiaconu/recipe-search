@@ -1,13 +1,12 @@
 {
   "name": "recipe-search",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "bin": {
     "recipe-search": "index.js"
   },
   "scripts": {
     "start": "start http://localhost:8080 && http-server docs",
-    "build": "ng build && javascript-obfuscator docs && node obfuscate.js",
-    "watch": "npm run build && npm run index",
+    "build": "ng build && javascript-obfuscator docs && node obfuscate.js && npm run start",
     "test": "jest",
     "lint": "eslint .",
     "full": "npm run lint && npm run test && npm run build"

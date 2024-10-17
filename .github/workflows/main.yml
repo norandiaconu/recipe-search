@@ -1,25 +1,28 @@
 name: Run tests
 on:
-  push:
-    branches: ["main"]
-  workflow_dispatch:
+    push:
+        branches: ['main']
+    workflow_dispatch:
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    timeout-minutes: 9
-    steps:
-      - uses: actions/checkout@v3
+    build:
+        runs-on: ubuntu-latest
+        timeout-minutes: 9
+        steps:
+            - uses: actions/checkout@v3
 
-      - name: run install
-        run: npm ci
+            - name: run install
+              run: npm ci
 
-      - name: run tests
-        run: npm run test
+            - name: run tests
+              run: |
+                  touch src/environments/environment.ts
+                  echo export const environment = {production: false, apiKey: \"123\"} >> src/environments/environment.ts
+                  npm run test
 
-      - name: tests passed
-        if: ${{ success() }}
-        run: echo tests passed
+            - name: tests passed
+              if: ${{ success() }}
+              run: echo tests passed
 
-      - name: tests failed
-        if: ${{ failure() }}
-        run: echo tests failed
+            - name: tests failed
+              if: ${{ failure() }}
+              run: echo tests failed

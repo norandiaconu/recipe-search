@@ -2,26 +2,28 @@ import { Component } from '@angular/core';
 import { z } from 'zod';
 import { environment } from 'src/environments/environment';
 
-const recipeZ = z.object({
+const zodIngredients = z.object({
     name: z.string(),
-    sections: z.array(
+    components: z.array(
         z.object({
-            name: z.string(),
-            components: z.array(
-                z.object({
-                    raw_text: z.string()
-                })
-            )
+            raw_text: z.string()
         })
-    ),
-    instructions: z.array(
-        z.object({
-            display_text: z.string()
-        })
-    ),
+    )
+});
+type Ingredients = z.infer<typeof zodIngredients>;
+
+const zodInstructions = z.object({
+    display_text: z.string()
+});
+type Instructions = z.infer<typeof zodInstructions>;
+
+const zodRecipe = z.object({
+    name: z.string(),
+    sections: z.array(zodIngredients),
+    instructions: z.array(zodInstructions),
     slug: z.string()
 });
-type Recipe = z.infer<typeof recipeZ>;
+type Recipe = z.infer<typeof zodRecipe>;
 
 interface Result {
     count: number;
@@ -37,8 +39,8 @@ export class AppComponent {
     title = 'recipe-search';
     recipes: Recipe[] = [];
     recipeName = '';
-    ingredients: any[] = [];
-    instructions: any[] = [];
+    ingredients: Ingredients[] = [];
+    instructions: Instructions[] = [];
     slug = '';
 
     async searchTasty(ingredient1: string, ingredient2: string, ingredient3: string): Promise<void> {
