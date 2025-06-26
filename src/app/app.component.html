@@ -10,21 +10,32 @@
     </div>
     <button (click)="searchTasty(ingredient1.value, ingredient2.value, ingredient3.value)" class="space">SEARCH</button>
     <div class="center">
-        <div *ngFor="let recipe of recipes">
+        @for (recipe of recipes; track recipe) {
+        <div>
             <button (click)="display(recipe)" class="space">{{ recipe.name }}</button>
         </div>
+        }
     </div>
     <br />
     <a href="https://tasty.co/recipe/{{ slug }}" target="_blank" class="space fw700">{{ recipeName }}</a>
     <br />
     <div class="recipe">
-        <div *ngIf="ingredients.length">Ingredients:</div>
-        <div *ngFor="let ingredient of ingredients; let i = index">
-            <span *ngIf="ingredient.name">{{ i + 1 }}) {{ ingredient.name }}: </span>
-            <span *ngFor="let component of ingredient.components">{{ component.raw_text }}; </span>
+        @if (ingredients.length) {
+        <div>Ingredients:</div>
+        } @for (ingredient of ingredients; track ingredient; let i = $index) {
+        <div>
+            @if (ingredient.name) {
+            <span>{{ i + 1 }}) {{ ingredient.name }}: </span>
+            } @for (component of ingredient.components; track component) {
+            <span>{{ component.raw_text }}; </span>
+            }
         </div>
+        }
         <br />
-        <div *ngIf="instructions.length">Instructions:</div>
-        <div *ngFor="let instruction of instructions; let i = index">{{ i + 1 }}) {{ instruction.display_text }}</div>
+        @if (instructions.length) {
+        <div>Instructions:</div>
+        } @for (instruction of instructions; track instruction; let i = $index) {
+        <div>{{ i + 1 }}) {{ instruction.display_text }}</div>
+        }
     </div>
 </div>

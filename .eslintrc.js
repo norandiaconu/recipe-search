@@ -12,7 +12,19 @@ https://github.com/typescript-eslint/tslint-to-eslint-config/blob/master/docs/FA
 Happy linting! 💖
 */
 module.exports = {
-    ignorePatterns: ['coverage/', 'docs/', 'environments/', '.eslintrc.js', 'index.js', 'jest.config.js', 'obfuscate.js', 'setup-jest.ts'],
+    ignorePatterns: [
+        'coverage/',
+        'docs/',
+        'environments/',
+        '.eslintrc.js',
+        'capacitor.config.ts',
+        'index.js',
+        'jest.config.js',
+        'main.ts',
+        'polyfills.ts',
+        'setup-jest.ts',
+        'obfuscate.js'
+    ],
     env: {
         browser: true,
         es6: true,
@@ -29,9 +41,7 @@ module.exports = {
         '@angular-eslint/eslint-plugin',
         '@typescript-eslint',
         '@typescript-eslint/tslint',
-        '@angular-eslint',
-        'eslint-plugin-prefer-arrow',
-        'eslint-plugin-jsdoc'
+        '@angular-eslint'
     ],
     root: true,
     rules: {
@@ -113,7 +123,6 @@ module.exports = {
         'id-match': 'off',
         'import/no-deprecated': 'warn',
         indent: 'off',
-        'jsdoc/check-alignment': 'error',
         'max-classes-per-file': ['error', 1],
         'max-len': [
             'error',
@@ -138,7 +147,6 @@ module.exports = {
         'no-unused-expressions': 'off',
         'no-unused-labels': 'error',
         'no-var': 'error',
-        'prefer-arrow/prefer-arrow-functions': 'error',
         'prefer-const': 'error',
         quotes: 'off',
         radix: 'error',
