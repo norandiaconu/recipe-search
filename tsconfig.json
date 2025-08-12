@@ -2,9 +2,7 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
-        "baseUrl": "./",
         "outDir": "./dist/out-tsc",
-        "forceConsistentCasingInFileNames": true,
         "strict": true,
         "noImplicitOverride": true,
         "noPropertyAccessFromIndexSignature": true,
@@ -18,7 +16,6 @@
         "target": "ES2022",
         "module": "es2020",
         "esModuleInterop": true,
-        "lib": ["es2020", "dom"],
         "useDefineForClassFields": false
     },
     "angularCompilerOptions": {
@@ -26,7 +23,5 @@
         "strictInjectionParameters": true,
         "strictInputAccessModifiers": true,
         "strictTemplates": true
-    },
-    "files": ["src/main.ts"],
-    "include": ["src/**/*.d.ts"]
+    }
 }

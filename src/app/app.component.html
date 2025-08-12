@@ -4,11 +4,11 @@
 
 <div class="content" role="main">
     <div class="center">
-        <input #ingredient1 class="space" />
-        <input #ingredient2 class="space" />
-        <input #ingredient3 class="space" />
+        <input #ingredient1 class="space input" />
+        <input #ingredient2 class="space input" />
+        <input #ingredient3 class="space input" />
     </div>
-    <button (click)="searchTasty(ingredient1.value, ingredient2.value, ingredient3.value)" class="space">SEARCH</button>
+    <button (click)="searchTasty(ingredient1.value, ingredient2.value, ingredient3.value)" class="space search">SEARCH</button>
     <div class="center">
         @for (recipe of recipes; track recipe) {
         <div>

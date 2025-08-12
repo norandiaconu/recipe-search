@@ -1,6 +1,6 @@
 {
     "name": "recipe-search",
-    "version": "1.0.11",
+    "version": "1.0.12",
     "bin": {
         "recipe-search": "index.js"
     },
@@ -12,6 +12,7 @@
         "full": "npm run lint && npm run test && npm run build"
     },
     "dependencies": {
+        "@angular/animations": "^19.2.14",
         "@angular/common": "^19.2.14",
         "@angular/compiler": "^19.2.14",
         "@angular/core": "^19.2.14",

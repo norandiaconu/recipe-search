@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { z } from 'zod';
-import { environment } from 'src/environments/environment';
+import { environment } from '../environments/environment';
 
 const zodIngredients = z.object({
     name: z.string(),
