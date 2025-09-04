@@ -11,9 +11,9 @@
     <button (click)="searchTasty(ingredient1.value, ingredient2.value, ingredient3.value)" class="space search">SEARCH</button>
     <div class="center">
         @for (recipe of recipes; track recipe) {
-        <div>
-            <button (click)="display(recipe)" class="space">{{ recipe.name }}</button>
-        </div>
+            <div>
+                <button (click)="display(recipe)" class="space">{{ recipe.name }}</button>
+            </div>
         }
     </div>
     <br />
@@ -21,21 +21,24 @@
     <br />
     <div class="recipe">
         @if (ingredients.length) {
-        <div>Ingredients:</div>
-        } @for (ingredient of ingredients; track ingredient; let i = $index) {
-        <div>
-            @if (ingredient.name) {
-            <span>{{ i + 1 }}) {{ ingredient.name }}: </span>
-            } @for (component of ingredient.components; track component) {
-            <span>{{ component.raw_text }}; </span>
-            }
-        </div>
+            <div>Ingredients:</div>
+        }
+        @for (ingredient of ingredients; track ingredient; let i = $index) {
+            <div>
+                @if (ingredient.name) {
+                    <span>{{ i + 1 }}) {{ ingredient.name }}: </span>
+                }
+                @for (component of ingredient.components; track component) {
+                    <span>{{ component.raw_text }}; </span>
+                }
+            </div>
         }
         <br />
         @if (instructions.length) {
-        <div>Instructions:</div>
-        } @for (instruction of instructions; track instruction; let i = $index) {
-        <div>{{ i + 1 }}) {{ instruction.display_text }}</div>
+            <div>Instructions:</div>
+        }
+        @for (instruction of instructions; track instruction; let i = $index) {
+            <div>{{ i + 1 }}) {{ instruction.display_text }}</div>
         }
     </div>
 </div>

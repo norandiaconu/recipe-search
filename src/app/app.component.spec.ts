@@ -6,6 +6,12 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 describe('AppComponent', () => {
     let fixture: ComponentFixture<AppComponent>;
     let app: AppComponent;
+    const recipe = {
+        name: 'testName',
+        sections: [{ name: 'sectionName', components: [{ raw_text: 'sectionText' }] }],
+        instructions: [{ display_text: 'instructionText' }],
+        slug: 'testSlug'
+    };
     beforeAll(() => {
         TestBed.configureTestingModule({
             imports: [],
@@ -30,16 +36,19 @@ describe('AppComponent', () => {
     });
 
     it('should display', () => {
-        const recipe = {
-            name: 'testName',
-            sections: [{ name: 'sectionName', components: [{ raw_text: 'sectionText' }] }],
-            instructions: [{ display_text: 'instructionText' }],
-            slug: 'testSlug'
-        };
         app.display(recipe);
         expect(app.recipeName).toEqual('testName');
         expect(app.ingredients).toEqual([{ name: 'sectionName', components: [{ raw_text: 'sectionText' }] }]);
         expect(app.instructions).toEqual([{ display_text: 'instructionText' }]);
         expect(app.slug).toEqual('testSlug');
+    });
+
+    it('should scroll window', () => {
+        jest.spyOn(window, 'scrollTo');
+        jest.useFakeTimers();
+        app.display(recipe);
+        jest.runAllTimers();
+        expect(window.scrollTo).toHaveBeenCalled();
+        jest.useRealTimers();
     });
 });
