@@ -10,6 +10,9 @@
     </div>
     <button (click)="searchTasty(ingredient1.value, ingredient2.value, ingredient3.value)" class="space search">SEARCH</button>
     <div class="center">
+        @if (isLoading) {
+            <div class="recipe">Loading...</div>
+        }
         @for (recipe of recipes; track recipe) {
             <div>
                 <button (click)="display(recipe)" class="space">{{ recipe.name }}</button>

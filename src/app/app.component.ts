@@ -33,18 +33,19 @@ interface Result {
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    standalone: true
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    title = 'recipe-search';
-    recipes: Recipe[] = [];
-    recipeName = '';
-    ingredients: Ingredients[] = [];
-    instructions: Instructions[] = [];
-    slug = '';
+    protected title = 'recipe-search';
+    protected recipes: Recipe[] = [];
+    protected recipeName = '';
+    protected ingredients: Ingredients[] = [];
+    protected instructions: Instructions[] = [];
+    protected slug = '';
+    protected isLoading = false;
 
-    async searchTasty(ingredient1: string, ingredient2: string, ingredient3: string): Promise<void> {
+    protected async searchTasty(ingredient1: string, ingredient2: string, ingredient3: string): Promise<void> {
+        this.isLoading = true;
         console.log(ingredient1, ingredient2, ingredient3);
         const ingredientList: string[] = [];
         ingredientList.push(ingredient1);
@@ -67,6 +68,7 @@ export class AppComponent {
         try {
             const response = await fetch(url, options);
             const result = (await response.json()) as Result;
+            this.isLoading = false;
             this.recipes = result.results;
             console.log(result.results);
         } catch (error) {
@@ -74,7 +76,7 @@ export class AppComponent {
         }
     }
 
-    display(recipe: Recipe): void {
+    protected display(recipe: Recipe): void {
         console.log(recipe);
         this.recipeName = recipe.name;
         this.ingredients = recipe.sections;

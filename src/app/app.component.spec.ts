@@ -32,21 +32,21 @@ describe('AppComponent', () => {
     });
 
     it('should have as title recipe-search', () => {
-        expect(app.title).toEqual('recipe-search');
+        expect(app['title']).toEqual('recipe-search');
     });
 
     it('should display', () => {
-        app.display(recipe);
-        expect(app.recipeName).toEqual('testName');
-        expect(app.ingredients).toEqual([{ name: 'sectionName', components: [{ raw_text: 'sectionText' }] }]);
-        expect(app.instructions).toEqual([{ display_text: 'instructionText' }]);
-        expect(app.slug).toEqual('testSlug');
+        app['display'](recipe);
+        expect(app['recipeName']).toEqual('testName');
+        expect(app['ingredients']).toEqual([{ name: 'sectionName', components: [{ raw_text: 'sectionText' }] }]);
+        expect(app['instructions']).toEqual([{ display_text: 'instructionText' }]);
+        expect(app['slug']).toEqual('testSlug');
     });
 
     it('should scroll window', () => {
         jest.spyOn(window, 'scrollTo');
         jest.useFakeTimers();
-        app.display(recipe);
+        app['display'](recipe);
         jest.runAllTimers();
         expect(window.scrollTo).toHaveBeenCalled();
         jest.useRealTimers();

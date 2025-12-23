@@ -1,6 +1,6 @@
 {
     "name": "recipe-search",
-    "version": "1.0.13",
+    "version": "1.0.14",
     "bin": {
         "recipe-search": "index.js"
     },
