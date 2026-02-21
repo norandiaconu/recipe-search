@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { describe, it, expect, beforeAll, vi } from 'vitest';
 
 describe('AppComponent', () => {
     let fixture: ComponentFixture<AppComponent>;
@@ -14,11 +15,11 @@ describe('AppComponent', () => {
     beforeAll(() => {
         TestBed.configureTestingModule({
             imports: [],
-            providers: [provideHttpClient()]
+            providers: [provideHttpClient(withInterceptorsFromDi())]
         });
         fixture = TestBed.createComponent(AppComponent);
         app = fixture.componentInstance;
-        jest.mock('src/environments/environment', () => ({
+        vi.mock('src/environments/environment', () => ({
             environment: {
                 production: false,
                 apiKey: '123'
@@ -43,11 +44,11 @@ describe('AppComponent', () => {
     });
 
     it('should scroll window', () => {
-        jest.spyOn(window, 'scrollTo');
-        jest.useFakeTimers();
+        vi.spyOn(window, 'scrollTo');
+        vi.useFakeTimers();
         app['display'](recipe);
-        jest.runAllTimers();
+        vi.runAllTimers();
         expect(window.scrollTo).toHaveBeenCalled();
-        jest.useRealTimers();
+        vi.useRealTimers();
     });
 });
