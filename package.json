@@ -1,9 +1,10 @@
 {
     "name": "recipe-search",
-    "version": "1.0.18",
+    "version": "1.0.19",
     "bin": {
         "recipe-search": "index.js"
     },
+    "type": "module",
     "scripts": {
         "start": "vite preview --port 8080 --outDir ./docs/browser --open",
         "build": "ng build && javascript-obfuscator docs/browser && node obfuscate.js && npm run start",
@@ -23,15 +24,12 @@
         "zone.js": "~0.15.1"
     },
     "devDependencies": {
-        "@angular-eslint/eslint-plugin": "~21.2.0",
         "@angular/build": "^21.1.4",
         "@angular/cli": "~21.1.4",
         "@angular/compiler-cli": "^21.1.5",
-        "@typescript-eslint/eslint-plugin": "~7.18.0",
-        "@typescript-eslint/eslint-plugin-tslint": "~7.0.2",
-        "@typescript-eslint/parser": "~7.18.0",
-        "eslint": "^8.57.0",
-        "eslint-plugin-import": "~2.29.1",
+        "angular-eslint": "~21.4.0",
+        "eslint": "~9.39.4",
+        "eslint-plugin-import": "~2.32.0",
         "javascript-obfuscator": "^4.0.2",
         "jsdom": "~27.4.0",
         "prettier": "~3.6.2",
