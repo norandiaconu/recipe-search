@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { z } from 'zod';
 import { environment } from '../environments/environment';
 
@@ -44,6 +44,8 @@ export class AppComponent {
     protected slug = '';
     protected isLoading = false;
 
+    private readonly cd = inject(ChangeDetectorRef);
+
     protected async searchTasty(ingredient1: string, ingredient2: string, ingredient3: string): Promise<void> {
         this.isLoading = true;
         console.log(ingredient1, ingredient2, ingredient3);
@@ -71,6 +73,7 @@ export class AppComponent {
             this.isLoading = false;
             this.recipes = result.results;
             console.log(result.results);
+            this.cd.markForCheck();
         } catch (error) {
             console.error(error);
         }

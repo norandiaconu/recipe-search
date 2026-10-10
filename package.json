@@ -1,6 +1,6 @@
 {
     "name": "recipe-search",
-    "version": "1.0.19",
+    "version": "1.0.20",
     "bin": {
         "recipe-search": "index.js"
     },
@@ -20,8 +20,7 @@
         "@angular/platform-browser": "^21.1.5",
         "@angular/platform-browser-dynamic": "~21.1.5",
         "rxjs": "~7.5.0",
-        "zod": "^3.22.4",
-        "zone.js": "~0.15.1"
+        "zod": "^3.22.4"
     },
     "devDependencies": {
         "@angular/build": "^21.1.4",
